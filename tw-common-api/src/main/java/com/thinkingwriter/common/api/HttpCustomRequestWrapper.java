@@ -1,12 +1,12 @@
 package com.thinkingwriter.common.api;
 
 import java.io.IOException;
+
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 import org.springframework.web.multipart.MultipartRequest;
-import org.springframework.web.multipart.support.DefaultMultipartHttpServletRequest;
 
 public class HttpCustomRequestWrapper extends HttpServletRequestWrapper {
 	
@@ -15,7 +15,7 @@ public class HttpCustomRequestWrapper extends HttpServletRequestWrapper {
 	
 	public HttpCustomRequestWrapper(HttpServletRequest request) throws IOException {
 		super(request);
-		this.multipartRequest = new DefaultMultipartHttpServletRequest(request);
+		this.multipartRequest = (MultipartRequest) request;
 		this.inputStream = request.getInputStream();
 	}
 
@@ -23,5 +23,7 @@ public class HttpCustomRequestWrapper extends HttpServletRequestWrapper {
 	public ServletInputStream getInputStream() throws IOException {
 		return this.inputStream;
 	}
+	
+	
 
 }

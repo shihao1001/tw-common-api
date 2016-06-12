@@ -38,7 +38,7 @@ public class HttpCustomResponseWrapper extends HttpServletResponseWrapper {
 		}
 		if(printWriter == null){
 			servletOutputStreamCopy = new ServletOutputStreamCopy(this.getResponse().getOutputStream());
-			printWriter = new PrintWriter(new OutputStreamWriter(servletOutputStreamCopy));
+			printWriter = new PrintWriter(new OutputStreamWriter(servletOutputStreamCopy,this.getResponse().getCharacterEncoding()),true);
 		}
 		return printWriter;
 	}
