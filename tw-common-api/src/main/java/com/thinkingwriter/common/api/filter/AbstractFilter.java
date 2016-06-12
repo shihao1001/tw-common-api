@@ -25,7 +25,7 @@ public class AbstractFilter implements Filter {
 	private MultipartResolver multipartResolver;
 
 	public void init(FilterConfig filterConfig) throws ServletException {
-		WebApplicationContext webCtx = WebApplicationContextUtils.getWebApplicationContext(filterConfig.getServletContext());	
+		WebApplicationContext webCtx = WebApplicationContextUtils.getWebApplicationContext(filterConfig.getServletContext());	//spring-main.xml容器
 		try {
 			multipartResolver = webCtx.getBean(MultipartResolver.class);
 		} catch (BeansException e) {
